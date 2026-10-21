@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#faf9f6">
+  <meta name="description" content="Projects and experience of Saayer Javed, a mechatronics engineering student at QUT.">
+  <title>Saayer Javed — Engineering Projects</title>
+  <style>
+    :root { --page: #faf9f6; --white: #fff; --ink: #242527; --muted: #61676d; --line: #e4e4df; --blue: #285781; }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--page); color: var(--ink); font: 16px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif; }
+    a { color: var(--blue); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    :focus-visible { outline: 2px solid var(--blue); outline-offset: 4px; }
+    .wrap { width: min(100% - 46px, 1000px); margin: 0 auto; }
+    header { background: var(--page); border-bottom: 1px solid var(--line); }
+    .header-inner { min-height: 76px; display: flex; justify-content: space-between; align-items: center; gap: 22px; }
+    .site-name { font-weight: 700; font-size: 17px; letter-spacing: -.025em; color: var(--ink); }
+    .site-name:hover { text-decoration: none; }
+    nav { display: flex; align-items: center; gap: clamp(13px, 3vw, 30px); flex-wrap: wrap; }
+    nav a { font-size: 14px; color: #50565c; }
+    nav a:hover { color: var(--ink); }
+    .intro { padding: 91px 0 87px; display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(220px, .7fr); align-items: center; gap: 90px; }
+    .hello { margin: 0 0 13px; font-size: 16px; color: var(--blue); font-weight: 600; }
+    h1 { margin: 0 0 24px; font-size: clamp(36px, 4.8vw, 58px); font-weight: 650; letter-spacing: -.055em; line-height: 1.14; max-width: 660px; }
+    .lead { max-width: 610px; margin: 0 0 15px; font-size: 17px; line-height: 1.8; color: #50575d; }
+    .text-link { font-size: 15px; font-weight: 600; display: inline-block; margin: 8px 22px 0 0; }
+    .aside { background: #f0efeb; border-radius: 6px; padding: 25px 28px; }
+    .aside h2 { margin: 0 0 16px; font-size: 14px; }
+    .aside dl { margin: 0; }
+    .aside dt { color: #6a6c6d; font-size: 12px; margin: 13px 0 0; }
+    .aside dd { margin: 1px 0 0; font-size: 14px; font-weight: 600; line-height: 1.5; }
+    .section { padding: 75px 0 81px; border-top: 1px solid var(--line); }
+    .section-head { margin-bottom: 31px; }
+    .section-head h2 { margin: 0 0 8px; font-weight: 650; font-size: 31px; line-height: 1.25; letter-spacing: -.04em; }
+    .section-head p { margin: 0; color: var(--muted); font-size: 15px; }
+    .projects { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 23px; }
+    .project { background: var(--white); border: 1px solid #e4e4df; border-radius: 6px; overflow: hidden; display: flex; flex-direction: column; }
+    .cover { position: relative; height: 205px; display: flex; flex-direction: column; justify-content: space-between; padding: 24px 27px; overflow: hidden; background: #e5e9eb; }
+    .cover.robot { background: #dfe8e7; }
+    .cover.app { background: #e9e9df; }
+    .cover.vision { background: #e4e7ef; }
+    .cover.elevator { background: #eae5e0; }
+    .cover::after { content: ""; width: 180px; height: 180px; border: 1px solid rgba(49,61,64,.18); border-radius: 50%; position: absolute; right: -40px; bottom: -92px; pointer-events: none; }
+    .cover .num { font-size: 12px; letter-spacing: .02em; color: #586167; }
+    .cover .cover-title { max-width: 310px; position: relative; z-index: 1; font-size: clamp(24px, 3vw, 32px); letter-spacing: -.045em; font-weight: 650; line-height: 1.11; color: #303d42; }
+    .cover.app .cover-title { color: #465047; }
+    .cover.vision .cover-title { color: #3d465b; }
+    .cover.elevator .cover-title { color: #544a42; }
+    .cover.has-photo { background-size: cover; background-position: center; }
+    .cover.has-photo::before { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,.40), rgba(0,0,0,.04) 65%, rgba(0,0,0,.55)); }
+    .cover.has-photo .num, .cover.has-photo .cover-title { position: relative; color: white; }
+    .cover.has-photo::after { display: none; }
+    .project-body { padding: 23px 26px 24px; flex: 1; display: flex; flex-direction: column; }
+    .meta { color: #687078; font-size: 12px; margin: 0 0 7px; }
+    .project h3 { margin: 0 0 9px; font-size: 20px; font-weight: 650; letter-spacing: -.02em; }
+    .project p { color: #545b61; margin: 0 0 12px; font-size: 14px; line-height: 1.72; }
+    .tools { margin-top: auto !important; font-size: 13px !important; color: #767c80 !important; }
+    details { border-top: 1px solid #ededeb; margin-top: 4px; padding-top: 15px; }
+    summary { color: var(--blue); font-size: 14px; font-weight: 600; cursor: pointer; width: fit-content; }
+    summary:hover { text-decoration: underline; }
+    details ul { margin: 12px 0 8px; padding-left: 18px; }
+    details li { margin: 0 0 9px; font-size: 14px; line-height: 1.6; color: #4e575d; }
+    .note { margin: 11px 0 0 !important; color: #656d74 !important; }
+    .about-cols { display: grid; grid-template-columns: 1.15fr 1fr; gap: 90px; }
+    .about-cols p { margin: 0 0 15px; color: #51585e; font-size: 15px; line-height: 1.8; }
+    .about-cols h3 { font-weight: 650; font-size: 17px; margin: 0 0 15px; }
+    .skills { margin: 0; padding: 0; list-style: none; }
+    .skills li { font-size: 14px; color: #50565c; margin-bottom: 11px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+    .skills b { display: block; font-size: 13px; margin-bottom: 3px; color: #30343a; }
+    .contact { margin: 0 0 40px; padding: 0; }
+    .contact .box { border-top: 1px solid var(--line); padding: 49px 0 35px; display: flex; justify-content: space-between; gap: 30px; align-items: center; }
+    .contact h2 { margin: 0 0 5px; font-size: 24px; letter-spacing: -.035em; font-weight: 650; }
+    .contact p { margin: 0; font-size: 14px; color: #666c70; }
+    .contact-links { display: flex; flex-wrap: wrap; gap: 20px; }
+    .contact-links a { font-size: 14px; font-weight: 600; }
+    .setup-note { font-size: 12px !important; font-style: italic; }
+    footer { border-top: 1px solid var(--line); padding: 20px 0 28px; font-size: 12px; color: #83888b; }
+    [hidden] { display: none !important; }
+    @media(max-width: 760px) {
+      .intro { grid-template-columns: 1fr; gap: 28px; padding: 65px 0; }
+      .aside { max-width: 100%; }
+      .about-cols { grid-template-columns: 1fr; gap: 30px; }
+      .section { padding: 57px 0; }
+      .contact .box { display: block; }
+      .contact-links { margin-top: 17px; }
+    }
+    @media(max-width: 560px) {
+      .wrap { width: min(100% - 36px, 1000px); }
+      .header-inner { min-height: 67px; }
+      .site-name { font-size: 15px; }
+      nav { gap: 13px; }
+      nav a { font-size: 12px; }
+      .projects { grid-template-columns: 1fr; gap: 19px; }
+      .cover { height: 184px; }
+      h1 { font-size: 39px; }
+      .lead { font-size: 16px; }
+      .project-body { padding: 19px 20px 21px; }
+    }
+    @media(prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap header-inner">
+      <a href="#top" class="site-name">Saayer Javed</a>
+      <nav aria-label="Site navigation"><a href="#projects">Projects</a><a href="#about">About</a><a href="#contact">Contact</a><a data-url="resume" hidden href="#">Resume</a></nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="wrap intro" aria-labelledby="intro-title">
+      <div>
+        <p class="hello">Hi, I'm Saayer.</p>
+        <h1 id="intro-title">I study mechatronics and like building things.</h1>
+        <p class="lead">I'm an engineering student at QUT in Brisbane. I've worked on robots, motor control, computer vision and software projects — usually learning quite a bit from things not going to plan the first time.</p>
+        <p class="lead">I'm particularly interested in control systems and industrial automation.</p>
+        <a class="text-link" href="#projects">Have a look at my projects &rarr;</a>
+        <a class="text-link" data-url="github" hidden href="#" target="_blank" rel="noopener noreferrer">GitHub &nearr;</a>
+      </div>
+      <aside class="aside" aria-label="A little about me">
+        <h2>Quick info</h2>
+        <dl>
+          <dt>Studying</dt><dd>Bachelor of Engineering (Honours), Mechatronics</dd>
+          <dt>University</dt><dd>Queensland University of Technology</dd>
+          <dt>Based in</dt><dd>Brisbane, Australia</dd>
+          <dt>Interested in</dt><dd>Controls, automation and robotics</dd>
+        </dl>
+      </aside>
+    </section>
+
+    <section id="projects" class="section" aria-labelledby="projects-heading">
+      <div class="wrap">
+        <div class="section-head"><h2 id="projects-heading">Projects</h2><p>A few things I've worked on at uni and in my own time.</p></div>
+        <div class="projects">
+          <article class="project">
+            <div class="cover robot" data-photo="robot"><span class="num">01 / MECHATRONICS</span><span class="cover-title">Tracked rescue robot</span></div>
+            <div class="project-body">
+              <p class="meta">2026 · University team project</p>
+              <h3>Search &amp; Rescue Robot</h3>
+              <p>I worked on the mobility side of a small rescue robot: the chassis, tracks, motors and how it moves around the course.</p>
+              <p class="tools">Fusion 360 · N20 motors · Encoders · PI control</p>
+              <details><summary>What I did</summary><ul>
+                <li>Designed the compact chassis, motor mounts, component layout and enclosed wiring.</li>
+                <li>Used two 100:1 N20 motors with rubber tracks and carbon-fibre-reinforced 3D-printed sprockets.</li>
+                <li>Tested turning, straight-line tracking, ramps and bumps, and worked on motor speed control using encoder feedback.</li>
+                <li>The measured top speed was 0.187 m/s. It fell short of the high-speed target but performed well in several manoeuvring tests.</li>
+              </ul></details>
+            </div>
+          </article>
+          <article class="project">
+            <div class="cover app" data-photo="app"><span class="num">02 / PERSONAL PROJECT</span><span class="cover-title">HalalAU app</span></div>
+            <div class="project-body">
+              <p class="meta">2026 · Personal project · In development</p>
+              <h3>HalalAU</h3>
+              <p>A mobile app I'm building to help people find halal food in Australia and check product information by scanning barcodes.</p>
+              <p class="tools">Flutter · Dart · Supabase · APIs</p>
+              <details><summary>What I did</summary><ul>
+                <li>Built the app using Flutter, including product scanning and restaurant search screens.</li>
+                <li>Added location features, favourites, user accounts and restaurant information.</li>
+                <li>Set up a Supabase backend and worked on data updates, UI design and testing.</li>
+                <li>The information is intended to support user research, not to certify products or businesses.</li>
+              </ul></details>
+            </div>
+          </article>
+          <article class="project">
+            <div class="cover vision" data-photo="vision"><span class="num">03 / ROBOTICS</span><span class="cover-title">Robot vision &amp; pick-and-place</span></div>
+            <div class="project-body">
+              <p class="meta">2026 · University project</p>
+              <h3>Vision-Guided Robot Arm</h3>
+              <p>Used Python and OpenCV to detect coloured objects, work out their positions and send movement commands to a robot arm.</p>
+              <p class="tools">Python · OpenCV · Homography · Inverse kinematics</p>
+              <details><summary>What I did</summary><ul>
+                <li>Detected colours and shapes using HSV thresholding, image filtering and contours.</li>
+                <li>Calculated object centres and mapped image coordinates into robot workspace coordinates.</li>
+                <li>Used inverse kinematics to move the robot to target positions.</li>
+                <li>Tested in simulation and the lab, including investigating real-world suction and calibration issues.</li>
+              </ul></details>
+            </div>
+          </article>
+          <article class="project">
+            <div class="cover elevator" data-photo="elevator"><span class="num">04 / PROGRAMMING</span><span class="cover-title">Elevator control in C</span></div>
+            <div class="project-body">
+              <p class="meta">2026 · University assignment</p>
+              <h3>Elevator Control System</h3>
+              <p>Worked on a C programming assignment involving elevator requests, safety checks and multiple programs running together.</p>
+              <p class="tools">C · Linux · Concurrency · Automated testing</p>
+              <details><summary>What I did</summary><ul>
+                <li>Developed and debugged C programs in a Linux environment.</li>
+                <li>Worked with program state, communication, safety behaviour and synchronisation.</li>
+                <li>Used automated tests to find errors and improve reliability.</li>
+              </ul></details>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section" aria-labelledby="about-heading">
+      <div class="wrap">
+        <div class="section-head"><h2 id="about-heading">A bit about me</h2></div>
+        <div class="about-cols">
+          <div>
+            <p>I'm doing a Bachelor of Engineering (Honours) in Mechatronics at QUT. I enjoy projects where I get to combine physical hardware with code — and then test whether it actually does what it's meant to do.</p>
+            <p>At the moment I'm most interested in learning more about PLCs, industrial control systems and automation. I've also been building mobile apps in my own time.</p>
+            <p>I'm using this page to keep a record of projects I've worked on and what I learned along the way.</p>
+          </div>
+          <div><h3>Tools &amp; skills</h3><ul class="skills">
+            <li><b>Programming</b>Python, C, Dart / Flutter</li>
+            <li><b>Robotics &amp; control</b>Motor control, encoders, PI/PID, kinematics</li>
+            <li><b>Design &amp; prototyping</b>Fusion 360, 3D printing, mechanical assembly</li>
+            <li><b>Other tools</b>Raspberry Pi, Linux, GitHub, Supabase, OpenCV</li>
+          </ul></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact" aria-labelledby="contact-heading">
+      <div class="wrap box">
+        <div><h2 id="contact-heading">Get in touch</h2><p>Happy to chat about projects, internships and engineering opportunities.</p><p class="setup-note" id="contact-setup-note">Add your links in the site settings before publishing.</p></div>
+        <div class="contact-links"><a data-url="email" hidden href="#">Email me &nearr;</a><a data-url="github" hidden href="#" target="_blank" rel="noopener noreferrer">GitHub &nearr;</a><a data-url="linkedin" hidden href="#" target="_blank" rel="noopener noreferrer">LinkedIn &nearr;</a><a data-url="resume" hidden href="#">Resume &darr;</a></div>
+      </div>
+    </section>
+  </main>
+  <footer><div class="wrap">© <span id="year">2026</span> Saayer Javed. Made with plain HTML &amp; CSS.</div></footer>
+  <script>
+    // Fill in your real links here. Blank values are hidden on the site.
+    const SITE_CONFIG = {
+      email: "",
+      github: "",
+      linkedin: "",
+      resume: "", // e.g. "resume.pdf"
+      photos: {
+        robot: "",    // e.g. "images/rescue-robot.jpg"
+        app: "",      // e.g. "images/halalau.jpg"
+        vision: "",   // e.g. "images/robot-vision.jpg"
+        elevator: ""  // e.g. "images/elevator.jpg"
+      }
+    };
+    document.getElementById("year").textContent = new Date().getFullYear();
+    document.querySelectorAll("[data-url]").forEach(link => {
+      const kind = link.dataset.url;
+      if (!SITE_CONFIG[kind]) return;
+      link.href = kind === "email" ? "mailto:" + SITE_CONFIG.email : SITE_CONFIG[kind];
+      link.hidden = false;
+    });
+    if (SITE_CONFIG.email || SITE_CONFIG.github || SITE_CONFIG.linkedin) {
+      document.getElementById("contact-setup-note").hidden = true;
+    }
+    document.querySelectorAll("[data-photo]").forEach(cover => {
+      const src = SITE_CONFIG.photos[cover.dataset.photo];
+      if (!src) return;
+      cover.style.backgroundImage = `url(${JSON.stringify(src)})`;
+      cover.classList.add("has-photo");
+    });
+  </script>
+</body>
+</html>
