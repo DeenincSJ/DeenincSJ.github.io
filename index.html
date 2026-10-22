@@ -73,6 +73,12 @@
     summary:hover { text-decoration: underline; }
     details ul { margin: 12px 0 8px; padding-left: 18px; }
     details li { margin: 0 0 9px; font-size: 14px; line-height: 1.6; color: #4e575d; }
+    .assembly-video { margin-top: 14px; padding-top: 17px; }
+    .assembly-video summary { display: inline-flex; align-items: center; gap: 9px; }
+    .assembly-video summary::marker { color: var(--blue); }
+    .assembly-video figure { margin: 17px 0 0; }
+    .assembly-video video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; background: #e7e8e6; border-radius: 5px; }
+    .assembly-video figcaption { color: #697178; font-size: 12px; line-height: 1.6; margin-top: 9px; }
     .note { margin: 11px 0 0 !important; color: #656d74 !important; }
     .about-cols { display: grid; grid-template-columns: 1.15fr 1fr; gap: 90px; }
     .about-cols p { margin: 0 0 15px; color: #51585e; font-size: 15px; line-height: 1.8; }
@@ -188,6 +194,17 @@
                 <li>Worked with encoder feedback and PI motor control to improve straight-line movement and turning.</li>
                 <li>Tested the robot on bumps, ramps and turns. It reached 0.187 m/s, with an 8 mm lateral error over 0.8 m in our best recorded straight-line trial.</li>
               </ul></details>
+              <details class="assembly-video">
+                <summary>▶ Watch the assembly animation (16 sec)</summary>
+                <figure>
+                  <video controls playsinline preload="metadata" poster="images/tracked-robot-assembly-poster.jpg" aria-label="CAD animation showing assembly of the tracked rescue robot">
+                    <source src="videos/tracked-robot-assembly.mp4" type="video/mp4">
+                    Your browser does not support video playback.
+                    <a href="videos/tracked-robot-assembly.mp4">Open the assembly video</a>.
+                  </video>
+                  <figcaption>A short CAD animation showing how the robot's chassis, drive system, electronics and recovery mechanism fit together.</figcaption>
+                </figure>
+              </details>
             </div>
           </article>
 
