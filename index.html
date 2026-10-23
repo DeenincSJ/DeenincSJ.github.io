@@ -53,8 +53,9 @@
     .phone-gallery .media-img { background: transparent; }
     .phone-gallery img { object-fit: contain; }
     .diagram-cover { display: flex; align-items: center; justify-content: center; position: relative; }
-    .kinematics-cover { background: #edf1f2; }
-    .kinematics-cover svg { max-width: 500px; }
+    .kinematics-photo { background: #e7e8e7; }
+    .kinematics-photo img { object-fit: cover; object-position: 50% 64%; }
+    .competition-note { font-weight: 600; color: #455d66 !important; margin-top: -2px !important; }
     .diagram-label { position: absolute; bottom: 17px; left: 22px; color: #6a797f; font-size: 12px; }
     .vision-cover { background: #ebece9; padding: 34px 25px; }
     .vision-steps { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 11px; }
@@ -162,12 +163,12 @@
             </div>
             <div class="project-body">
               <p class="meta">2026 · Mechatronics design · Team project</p>
-              <h3>infrared Line following Robot</h3>
-              <p>A university project involving an infrared line-following robot, where I worked on the turret, LED system, PCB and electronics design and Integration..</p>
+              <h3>Turret, LEDs &amp; PCB Integration</h3>
+              <p>A university robot project where I worked on the turret and LED system, as well as the PCB and electronics that helped everything work together.</p>
               <p class="tools">PCB · Electronics · Turret · Embedded systems</p>
               <details><summary>What I worked on</summary><ul>
-                <li>Worked on the PCB design and associated electronic components and connections.</li>
-                <li>Helped develop and test the turret and infrared LED features as part of the larger robot.</li>
+                <li>Worked on the PCB and associated electronic components and connections.</li>
+                <li>Helped develop and test the turret and LED features as part of the larger robot.</li>
                 <li>Worked on the robot's track logic and navigation as part of our team's subsystem split.</li>
                 <li>Helped bring the separate mechanical, electrical and software parts together for testing.</li>
               </ul></details>
@@ -187,6 +188,7 @@
               <p class="meta">2026 · Mechatronics design · Team project</p>
               <h3>Tracked Search &amp; Rescue Robot</h3>
               <p>I was responsible for the mobility subsystem — designing the chassis and getting a small tracked robot to drive, turn and handle uneven ground.</p>
+              <p class="competition-note">Competition result: Top-three contender, ranked #2 in the end-of-semester robot challenge.</p>
               <p class="tools">Fusion 360 · 3D printing · N20 motors · Encoders · PI control</p>
               <details><summary>What I worked on</summary><ul>
                 <li>Designed a compact chassis with motor mounts, enclosed wiring and mounting points for the robot's other components.</li>
@@ -233,23 +235,10 @@
           </article>
 
           <article class="project">
-            <div class="project-media diagram-cover kinematics-cover" role="img" aria-label="Simple diagram of a two-link robotic arm with joint and end-effector points">
-              <svg viewBox="0 0 520 300" width="100%" height="100%" aria-hidden="true" focusable="false">
-                <line x1="85" y1="246" x2="425" y2="246" stroke="#bbc9d0" stroke-width="1.5"/>
-                <line x1="100" y1="265" x2="100" y2="65" stroke="#bbc9d0" stroke-width="1.5"/>
-                <text x="435" y="252" font-size="13" fill="#7d8b92">x</text><text x="95" y="52" font-size="13" fill="#7d8b92">z</text>
-                <path d="M136 230 L227 151 L335 117" stroke="#355c75" stroke-width="17" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-                <circle cx="136" cy="230" r="18" fill="#f8f9f7" stroke="#355c75" stroke-width="6"/>
-                <circle cx="227" cy="151" r="15" fill="#f8f9f7" stroke="#355c75" stroke-width="6"/>
-                <circle cx="335" cy="117" r="12" fill="#e9a862" stroke="#a67b46" stroke-width="3"/>
-                <path d="M335 117 L387 89" stroke="#9faeb6" stroke-width="1.6" stroke-dasharray="5 6"/>
-                <text x="397" y="84" font-size="13" fill="#69777c">target</text>
-                <path d="M163 229 A34 34 0 0 0 163 205" stroke="#9faeb6" stroke-width="1.4" fill="none"/>
-                <text x="160" y="240" font-size="12" fill="#69777c">q1</text>
-                <text x="249" y="168" font-size="12" fill="#69777c">q2</text>
-                <text x="355" y="134" font-size="12" fill="#69777c">(x, y, z)</text>
-              </svg>
-              <span class="diagram-label">Forward &amp; inverse kinematics</span>
+            <div class="project-media single-photo kinematics-photo">
+              <a class="media-img" href="images/robot-kinematics-lab.jpg" target="_blank" rel="noopener noreferrer" aria-label="View robot arm kinematics lab photo full size">
+                <img src="images/robot-kinematics-lab.jpg" alt="Robot arm in a university robotics lab with coloured shapes laid out for positioning and pick-and-place exercises" loading="lazy">
+              </a>
             </div>
             <div class="project-body">
               <p class="meta">2026 · Robotics coursework</p>
