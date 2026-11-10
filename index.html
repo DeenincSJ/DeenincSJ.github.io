@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en-AU">
 <head>
@@ -53,42 +54,85 @@
     .phone-gallery .media-img { background: transparent; }
     .phone-gallery img { object-fit: contain; }
 
-    /* HalalAU: main playable demo, with supporting screenshots underneath. */
-    .halalau-media { height: auto; padding: 15px 14px 13px; background: #e9e9e5; }
+    /* Compact HalalAU gallery: the playable demo stays central and prominent,
+       with the two screenshots as smaller supporting images on either side. */
+    .halalau-media {
+      height: 265px;
+      padding: 14px 24px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+      align-items: center;
+      justify-items: center;
+      gap: 15px;
+      background: #e9e9e5;
+    }
     .halalau-video {
       display: block;
-      width: min(100%, 210px);
-      height: auto;
+      height: 235px;
+      max-height: 100%;
+      width: auto;
       aspect-ratio: 9 / 16;
       object-fit: contain;
-      margin: 0 auto;
       background: #111a16;
-      border-radius: 9px;
-      box-shadow: 0 4px 16px rgba(18, 32, 26, .16);
+      border-radius: 8px;
+      box-shadow: 0 3px 12px rgba(18, 32, 26, .15);
     }
-    .halalau-screenshots { display: flex; justify-content: center; align-items: center; gap: 12px; margin-top: 14px; }
     .halalau-screenshot {
       display: block;
-      width: 76px;
-      height: 98px;
+      width: min(100%, 90px);
+      height: 155px;
       overflow: hidden;
       background: #dedfdb;
       border: 1px solid #d5d7d1;
       border-radius: 5px;
+      box-shadow: 0 1px 5px rgba(18, 32, 26, .06);
     }
-    .halalau-screenshot img { display: block; width: 100%; height: 100%; object-fit: contain; transition: transform .18s ease; }
+    .halalau-screenshot img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      transition: transform .18s ease;
+    }
     .halalau-screenshot:hover img { transform: scale(1.035); }
-    .halalau-media-caption { text-align: center; color: #687078; font-size: 11px; margin: 8px 0 0; }
 
     .diagram-cover { display: flex; align-items: center; justify-content: center; position: relative; }
     .kinematics-photo { background: #e7e8e7; }
     .kinematics-photo img { object-fit: cover; object-position: 50% 64%; }
     .competition-note { font-weight: 600; color: #455d66 !important; margin-top: -2px !important; }
     .diagram-label { position: absolute; bottom: 17px; left: 22px; color: #6a797f; font-size: 12px; }
-    .vision-cover { background: #ebece9; padding: 34px 25px; }
-    .vision-steps { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 11px; }
-    .vision-steps span { background: white; border: 1px solid #d5dadb; border-radius: 3px; padding: 10px 11px; color: #536066; font-size: 12px; font-weight: 600; }
-    .vision-steps i { font-style: normal; color: #71838b; }
+
+    /* Two real computer-vision screenshots. Keep the project card the same height. */
+    .vision-gallery { position: relative; background: #151a1d; }
+    .vision-slide { display: block; position: absolute; inset: 0; overflow: hidden; }
+    .vision-slide[hidden] { display: none; }
+    .vision-slide img { display: block; width: 100%; height: 100%; object-fit: contain; }
+    .vision-switcher {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 5px;
+      max-width: calc(100% - 18px);
+      padding: 5px;
+      background: rgba(15, 20, 24, .88);
+      border-radius: 7px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, .15);
+    }
+    .vision-switcher button {
+      border: 0;
+      border-radius: 4px;
+      padding: 7px 10px;
+      background: transparent;
+      color: #eef1f2;
+      font-family: inherit; font-size: 12px; font-weight: 600; line-height: 1.2;
+      white-space: nowrap;
+      cursor: pointer;
+    }
+    .vision-switcher button[aria-pressed="true"] { background: #fff; color: #202c33; }
+    .vision-switcher button:hover:not([aria-pressed="true"]) { background: rgba(255, 255, 255, .15); }
+
     .code-cover { background: #e9e9e7; }
     .code-cover pre { color: #56636a; font-size: 19px; line-height: 1.5; font-family: ui-monospace, Consolas, monospace; }
     .code-cover pre span { color: #858f91; font-size: 15px; }
@@ -140,11 +184,11 @@
       nav a { font-size: 12px; }
       .projects { grid-template-columns: 1fr; gap: 19px; }
       .project-media { height: 225px; }
-      .halalau-media { height: auto; }
-      .halalau-video { width: min(100%, 195px); }
+      .halalau-media { height: 225px; padding: 12px; gap: 10px; }
+      .halalau-video { height: 201px; }
+      .halalau-screenshot { width: min(100%, 76px); height: 132px; }
       .phone-gallery { padding: 9px 18px; gap: 11px; }
-      .vision-steps { gap: 5px; }
-      .vision-steps span { font-size: 11px; padding: 7px; }
+      .vision-switcher button { font-size: 11px; padding: 6px 8px; }
       h1 { font-size: 39px; }
       .lead { font-size: 16px; }
       .project-body { padding: 19px 20px 21px; }
@@ -237,20 +281,17 @@
             </div>
           </article>
           <article class="project">
-            <div class="project-media halalau-media">
+            <div class="project-media halalau-media" aria-label="HalalAU app demonstration and screenshots">
+              <a class="halalau-screenshot" href="images/halalau-scanner.jpg" target="_blank" rel="noopener noreferrer" aria-label="View full HalalAU scanner screenshot">
+                <img src="images/halalau-scanner.jpg" alt="HalalAU product scanner screenshot" loading="lazy">
+              </a>
               <video class="halalau-video" controls playsinline preload="metadata" poster="images/halalau-video-poster.jpg" aria-label="14-second demonstration of the HalalAU mobile app">
                 <source src="videos/halalau-demo.mp4" type="video/mp4">
                 Your browser does not support this video. <a href="videos/halalau-demo.mp4">Watch the HalalAU demo</a>.
               </video>
-              <div class="halalau-screenshots" aria-label="Additional HalalAU screenshots">
-                <a class="halalau-screenshot" href="images/halalau-scanner.jpg" target="_blank" rel="noopener noreferrer" aria-label="View full HalalAU scanner screenshot">
-                  <img src="images/halalau-scanner.jpg" alt="HalalAU product scanner screenshot" loading="lazy">
-                </a>
-                <a class="halalau-screenshot" href="images/halalau-restaurants.jpg" target="_blank" rel="noopener noreferrer" aria-label="View full HalalAU restaurant screenshot">
-                  <img src="images/halalau-restaurants.jpg" alt="HalalAU restaurant detail screenshot" loading="lazy">
-                </a>
-              </div>
-              <div class="halalau-media-caption">App demo · Additional screenshots below</div>
+              <a class="halalau-screenshot" href="images/halalau-restaurants.jpg" target="_blank" rel="noopener noreferrer" aria-label="View full HalalAU restaurant screenshot">
+                <img src="images/halalau-restaurants.jpg" alt="HalalAU restaurant detail screenshot" loading="lazy">
+              </a>
             </div>
             <div class="project-body">
               <p class="meta">2026 · Personal project · In development</p>
@@ -286,8 +327,17 @@
             </div>
           </article>
           <article class="project">
-            <div class="project-media diagram-cover vision-cover" role="img" aria-label="Simple representation of the computer-vision steps from image input to object location">
-              <div class="vision-steps"><span>Camera</span><i aria-hidden="true">→</i><span>Colour mask</span><i aria-hidden="true">→</i><span>Contours</span><i aria-hidden="true">→</i><span>Robot position</span></div>
+            <div class="project-media vision-gallery" aria-label="Computer-vision processing screenshots">
+              <a class="vision-slide" id="vision-marker" href="images/vision-marker-matching.png" target="_blank" rel="noopener noreferrer" aria-label="Open full-size marker-recognition and template-matching screenshot">
+                <img src="images/vision-marker-matching.png" alt="Marker recognition pipeline showing a camera image, thresholding, centring and template matching" loading="lazy">
+              </a>
+              <a class="vision-slide" id="vision-obstacles" href="images/vision-red-obstacles.png" target="_blank" rel="noopener noreferrer" aria-label="Open full-size red-obstacle computer-vision screenshot" hidden>
+                <img src="images/vision-red-obstacles.png" alt="Red obstacle detection with the recorded camera view, hue image, HSV mask and contour boundary" loading="lazy">
+              </a>
+              <div class="vision-switcher" role="group" aria-label="Choose a computer-vision screenshot">
+                <button type="button" aria-pressed="true" aria-controls="vision-marker">Marker matching</button>
+                <button type="button" aria-pressed="false" aria-controls="vision-obstacles">Red obstacles</button>
+              </div>
             </div>
             <div class="project-body">
               <p class="meta">2026 · Robotics coursework</p>
@@ -371,6 +421,22 @@ IDLE  →  MOVING
     if (SITE_CONFIG.email || SITE_CONFIG.github || SITE_CONFIG.linkedin) {
       document.getElementById("contact-setup-note").hidden = true;
     }
+
+    // Switch between the two full-size computer-vision screenshots.
+    document.querySelectorAll(".vision-gallery").forEach(gallery => {
+      const slides = Array.from(gallery.querySelectorAll(".vision-slide"));
+      const buttons = Array.from(gallery.querySelectorAll(".vision-switcher button"));
+      buttons.forEach((button, selectedIndex) => {
+        button.addEventListener("click", () => {
+          slides.forEach((slide, index) => {
+            slide.hidden = index !== selectedIndex;
+          });
+          buttons.forEach((item, index) => {
+            item.setAttribute("aria-pressed", String(index === selectedIndex));
+          });
+        });
+      });
+    });
   </script>
 </body>
 </html>
