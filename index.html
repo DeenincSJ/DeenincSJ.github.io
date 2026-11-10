@@ -52,6 +52,34 @@
     .phone-gallery { background: #e9e9e5; padding: 9px 22px; gap: 18px; }
     .phone-gallery .media-img { background: transparent; }
     .phone-gallery img { object-fit: contain; }
+
+    /* HalalAU: main playable demo, with supporting screenshots underneath. */
+    .halalau-media { height: auto; padding: 15px 14px 13px; background: #e9e9e5; }
+    .halalau-video {
+      display: block;
+      width: min(100%, 210px);
+      height: auto;
+      aspect-ratio: 9 / 16;
+      object-fit: contain;
+      margin: 0 auto;
+      background: #111a16;
+      border-radius: 9px;
+      box-shadow: 0 4px 16px rgba(18, 32, 26, .16);
+    }
+    .halalau-screenshots { display: flex; justify-content: center; align-items: center; gap: 12px; margin-top: 14px; }
+    .halalau-screenshot {
+      display: block;
+      width: 76px;
+      height: 98px;
+      overflow: hidden;
+      background: #dedfdb;
+      border: 1px solid #d5d7d1;
+      border-radius: 5px;
+    }
+    .halalau-screenshot img { display: block; width: 100%; height: 100%; object-fit: contain; transition: transform .18s ease; }
+    .halalau-screenshot:hover img { transform: scale(1.035); }
+    .halalau-media-caption { text-align: center; color: #687078; font-size: 11px; margin: 8px 0 0; }
+
     .diagram-cover { display: flex; align-items: center; justify-content: center; position: relative; }
     .kinematics-photo { background: #e7e8e7; }
     .kinematics-photo img { object-fit: cover; object-position: 50% 64%; }
@@ -112,6 +140,8 @@
       nav a { font-size: 12px; }
       .projects { grid-template-columns: 1fr; gap: 19px; }
       .project-media { height: 225px; }
+      .halalau-media { height: auto; }
+      .halalau-video { width: min(100%, 195px); }
       .phone-gallery { padding: 9px 18px; gap: 11px; }
       .vision-steps { gap: 5px; }
       .vision-steps span { font-size: 11px; padding: 7px; }
@@ -129,7 +159,6 @@
       <nav aria-label="Site navigation"><a href="#projects">Projects</a><a href="#about">About</a><a href="#contact">Contact</a><a data-url="resume" hidden href="#">Resume</a></nav>
     </div>
   </header>
-
   <main id="top">
     <section class="wrap intro" aria-labelledby="intro-title">
       <div>
@@ -150,7 +179,6 @@
         </dl>
       </aside>
     </section>
-
     <section id="projects" class="section" aria-labelledby="projects-heading">
       <div class="wrap">
         <div class="section-head"><h2 id="projects-heading">Projects</h2><p>Some university projects and things I've been building myself. Click a photo to see it full-size.</p></div>
@@ -174,7 +202,6 @@
               </ul></details>
             </div>
           </article>
-
           <article class="project">
             <div class="project-media photo-pair robot-gallery">
               <a class="media-img" href="images/rescue-robot-side.jpg" target="_blank" rel="noopener noreferrer" aria-label="View side photo of tracked rescue robot">
@@ -209,15 +236,21 @@
               </details>
             </div>
           </article>
-
           <article class="project">
-            <div class="project-media photo-pair phone-gallery">
-              <a class="media-img" href="images/halalau-scanner.jpg" target="_blank" rel="noopener noreferrer" aria-label="View full HalalAU product scanner screenshot">
-                <img src="images/halalau-scanner.jpg" alt="HalalAU product result showing ingredient scores and a product assessment" loading="lazy">
-              </a>
-              <a class="media-img" href="images/halalau-restaurants.jpg" target="_blank" rel="noopener noreferrer" aria-label="View full HalalAU restaurant screen">
-                <img src="images/halalau-restaurants.jpg" alt="HalalAU restaurant detail page with halal information, maps and menu links" loading="lazy">
-              </a>
+            <div class="project-media halalau-media">
+              <video class="halalau-video" controls playsinline preload="metadata" poster="images/halalau-video-poster.jpg" aria-label="14-second demonstration of the HalalAU mobile app">
+                <source src="videos/halalau-demo.mp4" type="video/mp4">
+                Your browser does not support this video. <a href="videos/halalau-demo.mp4">Watch the HalalAU demo</a>.
+              </video>
+              <div class="halalau-screenshots" aria-label="Additional HalalAU screenshots">
+                <a class="halalau-screenshot" href="images/halalau-scanner.jpg" target="_blank" rel="noopener noreferrer" aria-label="View full HalalAU scanner screenshot">
+                  <img src="images/halalau-scanner.jpg" alt="HalalAU product scanner screenshot" loading="lazy">
+                </a>
+                <a class="halalau-screenshot" href="images/halalau-restaurants.jpg" target="_blank" rel="noopener noreferrer" aria-label="View full HalalAU restaurant screenshot">
+                  <img src="images/halalau-restaurants.jpg" alt="HalalAU restaurant detail screenshot" loading="lazy">
+                </a>
+              </div>
+              <div class="halalau-media-caption">App demo · Additional screenshots below</div>
             </div>
             <div class="project-body">
               <p class="meta">2026 · Personal project · In development</p>
@@ -233,7 +266,6 @@
               </ul></details>
             </div>
           </article>
-
           <article class="project">
             <div class="project-media single-photo kinematics-photo">
               <a class="media-img" href="images/robot-kinematics-lab.jpg" target="_blank" rel="noopener noreferrer" aria-label="View robot arm kinematics lab photo full size">
@@ -253,7 +285,6 @@
               </ul></details>
             </div>
           </article>
-
           <article class="project">
             <div class="project-media diagram-cover vision-cover" role="img" aria-label="Simple representation of the computer-vision steps from image input to object location">
               <div class="vision-steps"><span>Camera</span><i aria-hidden="true">→</i><span>Colour mask</span><i aria-hidden="true">→</i><span>Contours</span><i aria-hidden="true">→</i><span>Robot position</span></div>
@@ -271,7 +302,6 @@
               </ul></details>
             </div>
           </article>
-
           <article class="project">
             <div class="project-media diagram-cover code-cover" role="img" aria-label="Example C-language code showing a basic elevator controller state transition">
               <pre><span>// Controller states</span>
@@ -296,7 +326,6 @@ IDLE  →  MOVING
         </div>
       </div>
     </section>
-
     <section id="about" class="section" aria-labelledby="about-heading">
       <div class="wrap">
         <div class="section-head"><h2 id="about-heading">A bit about me</h2></div>
@@ -315,7 +344,6 @@ IDLE  →  MOVING
         </div>
       </div>
     </section>
-
     <section class="contact" id="contact" aria-labelledby="contact-heading">
       <div class="wrap box">
         <div><h2 id="contact-heading">Get in touch</h2><p>Happy to chat about projects, internships and engineering opportunities.</p><p class="setup-note" id="contact-setup-note">Add your links in the site settings before publishing.</p></div>
@@ -343,7 +371,6 @@ IDLE  →  MOVING
     if (SITE_CONFIG.email || SITE_CONFIG.github || SITE_CONFIG.linkedin) {
       document.getElementById("contact-setup-note").hidden = true;
     }
-
   </script>
 </body>
 </html>
